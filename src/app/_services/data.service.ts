@@ -10,7 +10,9 @@ export class DataService {
     observer.next(2);
     observer.next(3);
     observer.next(4);
-    observer.error(new Error('Observer errors here!'));
+    observer.next(5);
+    observer.next(6);
+    observer.next(7);
     observer.complete();
   });
   constructor() {}

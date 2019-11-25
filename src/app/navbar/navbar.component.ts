@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DataService } from '../_services/data.service';
 import { Observable, Subscription, throwError } from 'rxjs';
-import { map, tap, catchError, finalize } from 'rxjs/operators';
+import { map, tap, catchError, finalize, first, last } from 'rxjs/operators';
 
 @Component({
   selector: 'app-navbar',
@@ -17,6 +17,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
       .pipe(
         map(v => v * v),
         tap(val => console.log('Tapping to value', val)),
+        //first(v => v > 4),
+        last(v => v < 20),
         catchError(err => {
           console.log('Piped Catch Block', err);
           return throwError(new Error('Modified Error'));
