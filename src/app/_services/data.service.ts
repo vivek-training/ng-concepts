@@ -6,11 +6,12 @@ import { Observable } from 'rxjs';
 })
 export class DataService {
   stream$ = new Observable<number>(observer => {
-    let counter = 0;
-    setInterval(() => {
-      observer.next(counter);
-      counter++;
-    }, 1000);
+    observer.next(1);
+    observer.next(2);
+    observer.next(3);
+    observer.next(4);
+    observer.complete();
+    observer.error(new Error('Observer errors here!'));
   });
   constructor() {}
 }
